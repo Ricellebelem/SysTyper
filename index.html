@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Gestão do processo</title>
+</head>
+<body>
+  <div class="container"> 
+    <h1>SysTyper...</h1>
+    <h2>Consulta de ordem</h2>
+    <form method="POST">
+      <div class="form-group">  
+        <label for="sob">Digite a SOB:</label>
+        <input type="text" id="sob" name="sob" value="{{ sob }}" required>
+      </div>  
+        <button type="submit">Buscar</button>typer
+    </form>
+   
+    {% if solicitante is not none %}
+        <h2>Solicitante Encontrado:</h2>
+        <p>{{ solicitante }}</p>
+    {% elif sob %}
+        <h2>Nenhum solicitante encontrado para a SOB "{{ sob }}"</h2>
+    {% endif %}
+  
+    <h2>Deletar ordem</h2>
+    <form action="/deletar_ordem" method="POST">
+      <div class="form-group">
+        <label for="sob">SOB:</label>
+        <input type="text" id="sob" name="sob" required>
+      </div>    
+        <button type="submit">Deletar</button>
+    </form>
+  </div>
+</body>
+</html>
